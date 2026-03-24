@@ -3,12 +3,14 @@ import { useAppDispatch, useAppSelector } from '@/app/providers/store/hooks';
 import { useGetUsersQuery } from '@/entities/user';
 import { UsersList } from '@/entities/user';
 import { setSearch } from '@/features';
+import { useDebounce } from '@/shared/hooks';
 import { SearchInput } from '@/shared/ui';
 
 export function HomePage() {
   const dispatch = useAppDispatch();
   const { search } = useAppSelector((state) => state.search);
-  const { data, isError, isLoading } = useGetUsersQuery(search);
+  const debounceValue = useDebounce(search);
+  const { data, isError, isLoading } = useGetUsersQuery(debounceValue);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.trim();
