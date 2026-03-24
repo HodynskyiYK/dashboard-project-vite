@@ -1,8 +1,9 @@
 import type { ChangeEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '@/app/providers/store/hooks';
 import { useGetUsersQuery } from '@/entities/user';
+import { UsersList } from '@/entities/user';
 import { setSearch } from '@/features';
-import { SearchInput, UsersList } from '@/shared/ui';
+import { SearchInput } from '@/shared/ui';
 
 export function HomePage() {
   const dispatch = useAppDispatch();
@@ -14,8 +15,6 @@ export function HomePage() {
 
     dispatch(setSearch(value));
   };
-
-  console.log({ data });
 
   if (isLoading) {
     return <div>Loading...</div>;
