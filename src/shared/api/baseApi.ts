@@ -4,6 +4,7 @@ const BASE_URL = 'https://jsonplaceholder.typicode.com';
 
 export const baseApi = createApi({
   reducerPath: 'base',
+  tagTypes: ['User'],
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
   }),
