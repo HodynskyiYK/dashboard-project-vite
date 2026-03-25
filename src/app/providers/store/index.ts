@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { themeSlice } from '@/features';
+import { searchSlice } from '@/features';
 import { baseApi } from '@/shared/api/baseApi';
 
 export const store = configureStore({
   reducer: {
-    theme: themeSlice.reducer,
+    search: searchSlice.reducer,
     [baseApi.reducerPath]: baseApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

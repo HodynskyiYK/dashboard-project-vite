@@ -1,23 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 interface UIState {
-  theme: 'light' | 'dark';
+  search: string;
 }
 
 const initialState: UIState = {
-  theme: 'light',
+  search: '',
 };
 
-export const themeSlice = createSlice({
-  name: 'theme',
+export const searchSlice = createSlice({
+  name: 'search',
   initialState,
   reducers: {
-    toggleTheme: (state) => {
-      if (state.theme === 'dark') {
-        state.theme = 'light';
-      } else {
-        state.theme = 'dark';
-      }
+    setSearch: (state, action: PayloadAction<string>) => {
+      state.search = action.payload;
     },
   },
 });
+
+export const { setSearch } = searchSlice.actions;
